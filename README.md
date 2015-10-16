@@ -43,8 +43,24 @@ GeekCMS will be accessible from <http://localhost:8080>.
 Nginx
 ---
 
+Simple config example
 
-    # Example of configuration
+    server {
+        listen :80;
+        server_name yoursite.com;
+
+        location / {
+          index index.php index.html index.htm;
+          try_files $uri $uri/ /index.php?$args;
+        }
+
+        location ~ \.php$ {
+          include php.conf;
+        }
+    }
+
+
+Professional highload settings example of configuration
 
     server {
         listen :80;
